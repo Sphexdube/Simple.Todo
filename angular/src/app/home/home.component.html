@@ -12,9 +12,9 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-3 col-6">
-          <div class="small-box bg-warning">
+          <div class="small-box bg-blue">
             <div class="inner">
-              <h3>0</h3>
+              <h3>{{taskEmitter$ | async}}</h3>
               <p>Open Tasks</p>
             </div>
             <div class="icon">
@@ -30,7 +30,7 @@
               <h1>{{ "TodoItems" | localize }}</h1>
             </div>
             <div class="col-6 text-right">
-              <a href="javascript:;" class="btn bg-blue" >
+              <a href="javascript:;" class="btn bg-blue" (click)="createTask()">
                 <i class="fa fa-plus-square"></i>
                 {{ "Create" | localize }}
               </a>
@@ -56,7 +56,18 @@
                   </tr>
                 </thead>
                 <tbody>
-                  
+                  <tr *ngFor="let task of openTasks">
+                    <td>{{ task.id }}</td>
+                    <td>{{ task.description }}</td>
+                    <td>{{ task.creationTime | date: 'dd/MM/yyyy' }}</td>
+                    <td>{{ task.assignedPersonName }}</td>
+                    <td>
+                      <button type="button" class="btn btn-sm bg-blue" (click)="UpdateTask(task)">
+                        <i class="fas fa-pencil-alt"></i>
+                        {{ "Completed" | localize }}
+                      </button>
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>

@@ -7,7 +7,7 @@ using Simple.Todo.Authorization.Roles;
 
 namespace Simple.Todo.Authorization.Users
 {
-    public class UserStore : AbpUserStore<Role, User>
+  public class UserStore : AbpUserStore<Role, User>
     {
         public UserStore(
             IUnitOfWorkManager unitOfWorkManager,
